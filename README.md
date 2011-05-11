@@ -1,24 +1,24 @@
 # Catalogr
-* this project is in very early dev
+this project is in very early dev
 
 ## Goals
-* create a unique item database
-* organize these unique items in nested categories
-* admin interface to input new items and view current items
-* end user intereface to see the database
+create a unique item database
+organize these unique items in nested categories
+admin interface to input new items and view current items
+end user intereface to see the database
 
 ### Phase 1 - in dev
-* create basic input method for items and categories
+create basic input method for items and categories
 
 ### Phase 2
-* admin - new, edit, delete methods for items and categories
+admin - new, edit, delete methods for items and categories
 
 ### Phase 3
-* create proper view for items with images
+create proper view for items with images
 
 #### Working:
-* check username and password on submit
-  * if match -- create random key (token)
+check username and password on submit
+*	if match -- create random key (token)
 
 #### Next up:
-* Phase 1
+Phase 1
