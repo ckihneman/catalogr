@@ -246,7 +246,7 @@ window._c = {
 				_log( 'FIRE', params, fn );
 				
 				// call controller fn with jQuery this
-				gThis[ fn ].call( this, e, _m.models[ modelToActOn ] );
+				gThis[ fn ].call( this, e, _v.views[ modelToActOn ] );
 				
 			});
 			

@@ -130,7 +130,7 @@ _m.models.login = {
 				if ( data.type === 'login' && data.key ) {
 					gThis.key = data.key;
 					gThis.data = true;
-					_v.views.login.render();
+					_v.views.login.hide();
 				} else {
 					_log( 'login fail' );
 				}
@@ -158,7 +158,7 @@ _v.views.login = {
 	// global events for view -- built by _c.init()
 	// key = event name, value = function name
 	events : {
-		'#loginSubmit click' : 'get'
+		'login' : 'get'
 	},
 		
 	// gets fresh batch of deals via ajax jsonp
@@ -175,18 +175,22 @@ _v.views.login = {
 			});
 			
 	},
-		
+	
 	// toggle deals opacity between 1 and 0
 	toggle : function() {
 		this.$el.animate({
-			opacity : 0
+			opacity : 'toggle'
 		}, 1000 );
+		return this;
 	},
 	
 	// pushed ajax'd data from _m.getJsonp (on ajax done)
-	render : function() {
+	hide : function() {
 		var gThis = this;
-		this.$el.html( 'login success' );
+		
+		// this.toggle();
+		
+		this.$el.html( '<p class="info">login success</p>' );
 
 		setTimeout( function() {
 			gThis.toggle();
@@ -203,26 +207,32 @@ $.extend( _c, {
 	// 'view delegateNode eventType modelToActOn' : 'functionName'
 	// calls the functions with jQuery this, NOT _c this
 	events : {
+		'login #loginSubmit click login' : 'checkLogin'
 		// 'login li click deal' : 'setDealIndex'
+	},
+	
+	checkLogin : function( e, view ) {
+		$.event.trigger( 'login' );
+		// view.get( e );
 	},
 	
 	// sets the index of the deal model
 	// because this deals with the dom and calling to its model,
 	// this = jQuery obj from delegate
-	setDealIndex : function( e, model ) {
-		// get index off node data-index attribute
-		var index = $( this ).attr( 'data-index' );
-		
-		// set this new index in the model
-		model.setIndex( index );
-	},
+	// setDealIndex : function( e, model ) {
+	// 	// get index off node data-index attribute
+	// 	var index = $( this ).attr( 'data-index' );
+	// 	
+	// 	// set this new index in the model
+	// 	model.setIndex( index );
+	// },
 	
 	// called after all events are bound by _c.init()
 	ready : function() {
 		_log( '_c.ready' );
 		
 		// everything is set up, now trigger actions to populate the page
-		$.event.trigger( 'getDeals' );
+		// $.event.trigger( 'getDeals' );
 	}
 	
 });
