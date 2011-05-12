@@ -188,8 +188,6 @@ _v.views.login = {
 	hide : function() {
 		var gThis = this;
 		
-		// this.toggle();
-		
 		this.$el.html( '<p class="info">login success</p>' );
 
 		setTimeout( function() {
@@ -207,13 +205,12 @@ $.extend( _c, {
 	// 'view delegateNode eventType modelToActOn' : 'functionName'
 	// calls the functions with jQuery this, NOT _c this
 	events : {
-		'login #loginSubmit click login' : 'checkLogin'
+		'login #loginSubmit click login' : 'login'
 		// 'login li click deal' : 'setDealIndex'
 	},
 	
-	checkLogin : function( e, view ) {
+	login : function( e, view ) {
 		$.event.trigger( 'login' );
-		// view.get( e );
 	},
 	
 	// sets the index of the deal model
