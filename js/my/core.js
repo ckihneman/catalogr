@@ -202,12 +202,12 @@ window._c = {
 					}
 					
 					// bind event to view element with given function
-					event.$el.bind( event.type, function( e ) {
+					event.$el.bind( event.type, function() {
 
 						_log( 'FIRE', event, fn );
 					
 						// call view event function
-						view[ fn ].call( view, e );
+						view[ fn ].apply( view, arguments );
 
 					});
 				
